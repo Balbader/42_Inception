@@ -8,18 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "97e1c0d4294f8a48",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Welcome.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "fed107db198658cf",
             "type": "leaf",
             "state": {
@@ -29,21 +17,6 @@
                 "mode": "source",
                 "source": false
               }
-            }
-          }
-        ],
-        "currentTab": 1
-      },
-      {
-        "id": "63f73b2e7550bcd7",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "fe2554eb1c154670",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
-              "state": {}
             }
           }
         ]
@@ -97,7 +70,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "right": {
     "id": "6946900bc90f50ca",
@@ -174,7 +147,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "fed107db198658cf",
+  "active": "a7958b40f1a6eb23",
   "lastOpenFiles": [
     "Guide lines.md",
     "Welcome.md"
