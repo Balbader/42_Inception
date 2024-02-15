@@ -82,8 +82,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "9cad91224d7199c6",
@@ -162,8 +161,9 @@
   },
   "active": "fbc48ff3b9ebe934",
   "lastOpenFiles": [
-    "Commands.md",
+    "Untitled.md",
     "Volumes.md",
+    "Commands.md",
     "Welcome.md"
   ]
 }
