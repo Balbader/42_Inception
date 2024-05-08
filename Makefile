@@ -1,11 +1,9 @@
 ## CONTAINERS ##
-
 NGINX				:= nginx
 WORDPRESS			:= wordpress
 MARIADB				:= mariadb
 
 ## FOLDERS ##
-
 SRCS				:= srcs/
 REQ_DIR 			:= $(SRCS)/requirements/
 MARIADB_DIR			:= $(REQ_DIR)/mariadb/
@@ -14,12 +12,10 @@ TOOLS_DIR			:= $(REQ_DIR)/tools/
 WORDPRESS_DIR		:= $(REQ_DIR)/wordpress/
 
 ## VOLUMES ##
-
 VOLUMES				+= ~/data/mariadb
 VOLUMES				+= ~/data/wordpress
 
 ## ENV ##
-
 ENV_FILE			:= .env
 
 ENV_VAR_LIST		+= WP_ADMIN_USER
@@ -54,7 +50,6 @@ MYSQL_PASSWORD=\n\
 MISSING_VAR_HELP 	:= Environment variables are missing, type "make help"
 
 ## CHECK IF ENV IS COMPLETE ##
-
 ifeq ($(wildcard $(SRCS)$(ENV_FILE)),)
 $(error $(ENV_FILE) not found in $(SRCS) directory. Please create the $(ENV_FILE) file.)
 endif
@@ -81,7 +76,6 @@ $(call check_defined, $(ENV_VAR_LIST), $(MISSING_VAR_HELP))
 endif
 
 ## COMMANDS ##
-
 BUILD				:= docker-compose build
 UP					:= docker-compose up -d
 STOP				:= docker-compose stop
@@ -96,7 +90,6 @@ RM_ALL 				:= docker system prune -af
 PRINT_ENV_EXAMPLE 	:= echo -e $(ENV_EXAMPLE)
 
 ## RULES ##
-
 # Create volumes and start containers
 all: .create_volumes build up
 
