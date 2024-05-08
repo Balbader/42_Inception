@@ -57,4 +57,4 @@ else
 fi
 
 # Starts PHP-FPM to serve PHP files
-exec /usr/sbin/php-fpm8.2 -F -R
+exec /usr/sbin/php-fpm7.4 -F

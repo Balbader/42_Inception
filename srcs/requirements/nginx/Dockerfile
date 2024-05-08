@@ -1,4 +1,4 @@
-FROM debian:bookworm
+FROM debian:bullseye
 
 # install NGINX + dependencies
 RUN apt-get update -y
@@ -13,7 +13,7 @@ RUN apt-get install -y openssl
 # 2. generate the keys
 RUN mkdir -p /etc/nginx/
 RUN mkdir -p /etc/nginx/ssl
-RUN openssl req -x509 -nodes -out /etc/nginx/ssl/inception.crt -keyout /etc/nginx/ssl/inception.key -subj "/C=FR/ST=IDF/L=Paris/O=42/OU=42/CN=baalbade.42.fr/UID=baalbade"
+RUN openssl req -x509 -nodes -out /etc/nginx/ssl/baalbade.42.fr.crt -keyout /etc/nginx/ssl/baalbade.42.fr.key -subj "/C=FR/ST=IDF/L=Paris/O=42/OU=42/CN=baalbade.42.fr/UID=baalbade"
 
 # set working directory
 WORKDIR /etc/nginx
@@ -28,9 +28,6 @@ EXPOSE 443
 # copy entrypoint script
 COPY ./tools/entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/entrypoint.sh
-
-# tell nginx to run in the foreground rather than as a background deamon
-CMD ["nginx", "-g", "daemon off;"]
 
 # set entrypoint
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
