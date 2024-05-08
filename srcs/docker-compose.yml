@@ -1,21 +1,23 @@
+# version of the Docker compose file format
 version: '3'
 
+# defines the containers that need to be run as part of the application
 services:
 
   mariadb:
-    image: mariadb
-    container_name: mariadb
-    build:
-      context: ./requirements/mariadb
+    image: mariadb # image to use
+    container_name: mariadb # Name the container as "mariadb"
+    build: # Specifies a custom build context and Dockerfile
+      context: ./requirements/mariadb # location of the Dockerfile
       dockerfile: Dockerfile
-    volumes:
+    volumes: # mounts a volume from the host machine "data/mariadb" to the container dir "var/lib/mysql"
       - ~/data/mariadb:/var/lib/mysql
-    ports:
+    ports: # maps port 3306 on the host to port 3306 on the container allowing external access to the mariadb server
       - 3306:3306
-    env_file: .env
-    networks:
+    env_file: .env # file used to load environment variables into the container
+    networks: # connects the container to a custom network named "inception"
       - inception
-    restart: on-failure
+    restart: on-failure # configure the container to restart if it fails
 
   wordpress:
     image: wordpress
