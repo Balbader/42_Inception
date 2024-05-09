@@ -11,7 +11,7 @@ services:
       context: ./requirements/mariadb # location of the Dockerfile
       dockerfile: Dockerfile
     volumes: # mounts a volume from the host machine "data/mariadb" to the container dir "var/lib/mysql"
-      - ~/data/mariadb:/var/lib/mysql
+      - mariadb_data:/var/lib/mysql
     ports: # maps port 3306 on the host to port 3306 on the container allowing external access to the mariadb server
       - 3306:3306
     env_file: .env # file used to load environment variables into the container
@@ -26,7 +26,7 @@ services:
       context: ./requirements/wordpress
       dockerfile: Dockerfile
     volumes:
-      - ~/data/wordpress:/var/www/html
+      - wordpress_data:/var/www/html
     ports:
       - 9000:9000
     env_file: .env
@@ -43,7 +43,7 @@ services:
       context: ./requirements/nginx
       dockerfile: Dockerfile
     volumes:
-      - ~/data/wordpress:/var/www/html
+      - wordpress_data:/var/www/html
     ports:
       - 443:443
     env_file: .env
@@ -52,6 +52,12 @@ services:
     networks:
       - inception
     restart: on-failure
+
+volumes:
+  mariadb_data:
+    driver: local
+  wordpress_data:
+    driver: local
 
 networks:
   inception:
