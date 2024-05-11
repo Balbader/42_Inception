@@ -83,9 +83,6 @@ RESTART				:= docker-compose restart
 LOG					:= docker-compose logs
 CREATE_DIR			:= sudo mkdir -p ~/data/wordpress ~/data/mariadb
 RM_VOLUMES			:= sudo rm -fr ~/data/wordpress ~/data/mariadb
-STOP_CONT			:= if [ "$$(docker ps -q)" ]; then docker stop $$(docker ps -q); fi
-RM_IMG 				:= if [ "$$(docker images -q)" ]; then docker rmi $$(docker images -q) -f; fi
-RM_VOL 				:= if [ "$$(docker volume ls -q)" ]; then docker volume rm $$(docker volume ls -q); fi
 RM_ALL 				:= docker system prune -af
 PRINT_ENV_EXAMPLE 	:= echo -e $(ENV_EXAMPLE)
 
