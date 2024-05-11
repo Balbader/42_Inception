@@ -77,11 +77,11 @@ endif
 
 ## COMMANDS ##
 DOCKCOMP			:= docker-compose -f ./srcs/docker-compose.yml
-BUILD				:= docker-compose build
-UP					:= docker-compose up -d
-STOP				:= docker-compose stop
-RESTART				:= docker-compose restart
-LOG					:= docker-compose logs
+BUILD				:= $(DOCKCOMP) build
+UP					:= $(DOCKCOMP) up -d
+STOP				:= $(DOCKCOMP) stop
+RESTART				:= $(DOCKCOMP) restart
+LOG					:= $(DOCKCOMP) logs
 CREATE_DIR			:= sudo mkdir -p ~/data/wordpress ~/data/mariadb
 RM_VOLUMES			:= sudo rm -fr ~/data/wordpress ~/data/mariadb
 RM_ALL 				:= docker system prune -af
