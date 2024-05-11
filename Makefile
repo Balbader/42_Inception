@@ -113,10 +113,10 @@ log:
 stop: .stop_containers
 
 # Remove images and volumes
-clean: stop .remove_images .remove_volumes
+clean: stop .remove_local_dirs
 
 # Remove all images, volumes, and data
-fclean: clean .remove_local_dirs .remove_cache
+fclean: clean .remove_cache
 
 # Rebuild everything
 re: fclean all
@@ -131,21 +131,10 @@ help:
 .stop_containers:
 	cd $(SRCS); $(STOP)
 
-.remove_images:
-	cd $(NGINX_DIR); $(RM_IMG)
-	cd $(MARIADB_DIR); $(RM_IMG)
-	cd $(WORDPRESS_DIR); $(RM_IMG)
-
-.remove_volumes:
-	cd $(NGINX_DIR); $(RM_VOL)
-	cd $(MARIADB_DIR); $(RM_VOL)
-	cd $(WORDPRESS_DIR); $(RM_VOL)
-
 .remove_local_dirs:
 	$(RM_VOLUMES)
 
 .remove_cache:
 	$(RM_ALL)
 
-.SILENT:
-.PHONY:
+.PHONY: all up restart log stop clean fclean re help
