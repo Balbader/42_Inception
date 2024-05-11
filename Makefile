@@ -76,6 +76,7 @@ $(call check_defined, $(ENV_VAR_LIST), $(MISSING_VAR_HELP))
 endif
 
 ## COMMANDS ##
+DOCKCOMP			:= docker-compose -f ./srcs/docker-compose.yml
 BUILD				:= docker-compose build
 UP					:= docker-compose up -d
 STOP				:= docker-compose stop
